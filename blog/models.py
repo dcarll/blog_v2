@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 # Create your models here.
 class PublishedManager(models.Manager):
@@ -32,8 +33,18 @@ class Post(models.Model):
 
     published = PublishedManager()
 
+    def get_absolute_url(self):
+        return reverse('post_detail', args=[self.slug])
+
+    def get_absolute_url_update(self):
+        return reverse('post_edit', args=[self.slug])
+
+
+
+
     def __str__(self):
         return '{} - {} '.format(self.titulo, self.slug)
+
     
     class Meta:
         ordering = ('-publicado',)
