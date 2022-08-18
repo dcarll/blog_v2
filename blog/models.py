@@ -40,6 +40,11 @@ class Post(models.Model):
         return reverse('post_edit', args=[self.slug])
 
 
+    def get_absolute_url_delete(self):
+        return reverse('post_delete', args=[self.slug])
+
+
+
 
 
     def __str__(self):
