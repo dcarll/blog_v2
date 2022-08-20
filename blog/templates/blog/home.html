@@ -16,12 +16,12 @@
 					<div class="post-preview">
 						<a href="{{ post.get_absolute_url }}">
 							<h1><a href="{{ post.get_absolute_url }}">{{post.titulo}}</h1>
-							<h3 class="post-subtitle">{{ post.conteudo }}</h3>
+							<h3 class="post-subtitle">{{ post.conteudo|safe|truncatechars:'200' }}</h3>
 						</a>
 						<p class="post-meta">
-							Posted by {{post.autor}}
+							Postado por {{post.autor}}
 							
-							on {{post.publicado}}
+							em {{post.publicado}}
 						</p>
 						<hr class="my-4" />
 					</div>					

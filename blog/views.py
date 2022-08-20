@@ -4,6 +4,7 @@ from django.views.generic import ListView, DetailView, UpdateView, DeleteView
 from django.views.generic.edit import CreateView
 from .models import Post
 from django.contrib.messages.views import SuccessMessageMixin
+from .forms import PostForm
 
 # Create your views here.
 
@@ -24,10 +25,18 @@ class BLogDetailView(DetailView):
 class BLogCreateView(SuccessMessageMixin, CreateView):
 	'''Cria um novo post'''
 	model = Post
+	form_class = PostForm
 	template_name = 'blog/post_new.html'
-	fields = ('titulo'	, 'autor', 'conteudo')
+	#fields = ('titulo'	, 'autor', 'conteudo')
 	# fields = '__all__' 
 	success_message = "%(field)s was created successfully"
+
+	#vericar se o formulario é valido pegar o usuario que esta logado no sistema
+	def form_valid(self, form):
+		obj = form.save(commit=False)
+		obj.autor = self.request.user
+		obj.save()
+		return super().form_valid(form)
 
 	def get_success_message(self, cleaned_data): 
 		'''Mensagem de suceeso'''       
@@ -40,9 +49,17 @@ class BLogCreateView(SuccessMessageMixin, CreateView):
 class BlogUpdateView(SuccessMessageMixin, UpdateView ):
 	'''Atualiza um post'''
 	model = Post
+	form_class = PostForm
 	template_name = 'blog/post_edit.html'
-	fields = ('titulo', 'conteudo')
+	#fields = ('titulo', 'conteudo')
 	success_message = "%(field)s - foram alterados com sucesso"
+
+	#vericar se o formulario é valido pegar o usuario que esta logado no sistema
+	def form_valid(self, form):
+		obj = form.save(commit=False)
+		obj.autor = self.request.user
+		obj.save()
+		return super().form_valid(form)
 
 	def get_success_message(self, cleaned_data): 
 		'''Mensagem de sucesso'''       

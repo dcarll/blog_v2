@@ -14,15 +14,17 @@
 		</ul>
 	{% endif %}
  	<div class="post-entry border">
- 		<h2>{{ postagem.titulo}}</h2>
- 		<p>{{postagem.conteudo}}</p>
-		 <p>{{postagem.slug}}</p>
+		<div class="d-flex justify-content-center">
+			<h1 class="text-primary">{{ postagem.titulo}}</h1>
+		</div> 		
+ 		<p>{{postagem.conteudo|safe}}</p>
+		 <p>{{postagem.conteudo|safe}}</p>
+		<!-- safe é pata exibir a imagem e 'truncatechars:'200'' é limitar o tanto de text exibido no template-->
+		 
  	</div>
-	<div class="container row d-flex flex-wrap align-content-center">
-		
-			<a class="col-3 bg-success p-2 m-2 text-center" href="{{ postagem.get_absolute_url_update }}">+ Editar postagem do blog<h3></h3></a>
-			<a class="col-2 bg-success p-2 m-2 text-center" href="{{ postagem.get_absolute_url_delete }}">+ Deletar postagem<h3></h3></a>
-		
+	<div class="d-flex justify-content-center">		
+			<a class="col-sm-3 d-flex bg-secondary p-1 m-1 text-center" href="{{ postagem.get_absolute_url_update }}"><h5>+ Editar postagem do blog</h5></a>
+			<a class="col-sm-3 d-flex bg-secondary p-1 m-1 text-center" href="{{ postagem.get_absolute_url_delete }}"><h5>+ Deletar postagem<h5></a>		
 	</div>
 </div>
 {% endblock content %}
