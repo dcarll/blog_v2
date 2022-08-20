@@ -1,25 +1,17 @@
-<header>
-	
-	<div class="nav-left">
-		<h1><a href="{% url 'home' %}">Blog home</a></h1>
-		
-	</div>
-	<div class="nav-right">
-		<h3><a href="{% url 'post_new' %}">+ Nova postagem</a></h3>
-	</div>
-	<!-- Page Header-->
-	<header class="masthead" style="background-image: url('assets/img/home-bg.jpg')">
-		<div class="container position-relative px-4 px-lg-5">
-			<div class="row gx-4 gx-lg-5 justify-content-center">
-				<div class="col-md-10 col-lg-8 col-xl-7">
-					<div class="site-heading">
-						<h1>Clean Blog</h1>
-						<span class="subheading">A Blog Theme by Start Bootstrap</span>
-					</div>
+{% load static %}
+<!--header -->
+<header class="masthead" style="background-image: url({% static 'img/header.PNG' %})">
+	<div class="container position-relative px-4 px-lg-5">
+		<div class="row gx-4 gx-lg-5 justify-content-center">
+			<div class="col-md-10 col-lg-8 col-xl-7">
+				<div class="site-heading">
+					<h1>Blog do Diego</h1>
+					<span class="subheading">Nosso tempo é limitado, então, não gaste ele, vivendo a vida de mais alguém</span>
 				</div>
 			</div>
 		</div>
-	</header>
-	
+	</div>
+
+
 </header> 
-	
+<!-- Page Header-->
