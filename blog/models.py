@@ -11,6 +11,13 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from ckeditor.fields import RichTextField
 from django.utils.html import mark_safe #para interpreta o html e exibir e imgagem
+import uuid
+
+def get_file_path(_instance, filename):
+	'''função para gerar um id unico, que será passado na hora de gerar no caminho e no da imagem'''
+	ext = filename.split('.')[-1]
+	filename = f'{uuid.uuid4()}.{ext}'
+	return filename
 
 # Create your models here.
 class PublishedManager(models.Manager):
@@ -43,7 +50,7 @@ class Post(models.Model):
     slug = models.SlugField(max_length=250)
     autor = models.ForeignKey(User, on_delete=models.CASCADE)
     categoria = models.ManyToManyField(Category, related_name='get_posts')
-    imagem = models.ImageField(upload_to='blog', blank=True, null=True)
+    imagem = models.ImageField(upload_to='get_file_path', blank=True, null=True)
     conteudo = RichTextField(verbose_name='Conteúdo')
     publicado = models.DateTimeField(default=timezone.now)
     criado = models.DateTimeField(auto_now_add=True)

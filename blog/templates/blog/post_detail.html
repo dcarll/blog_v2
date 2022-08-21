@@ -1,8 +1,31 @@
 {% extends 'base.html'%}
+{% load static%}
 
 {% block title %}
 	Blog | Detalhes
 {% endblock title %}
+
+{% block header %}
+{% if object.imagem %}
+	<header class="masthead" style="background-image: url({{object.imagem.url}})">	
+{%else %}
+	<header class="masthead" style="background-image: url({% static 'img/header.PNG' %})">	
+{% endif %}
+	<div class="container position-relative px-4 px-lg-5">
+		<div class="row gx-4 gx-lg-5 justify-content-center">
+			<div class="col-md-10 col-lg-8 col-xl-7">
+				<div class="site-heading">
+					<h1>Blog do Diego</h1>
+					<span class="subheading">Nosso tempo é limitado, então, não gaste ele, vivendo a vida de mais alguém</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</header> 
+
+{% endblock %}
+
+
 
 {% block content %}
 <div class="container justify-content-center">
@@ -22,9 +45,11 @@
 		<!-- safe é pata exibir a imagem e 'truncatechars:'200'' é limitar o tanto de text exibido no template-->
 		 
  	</div>
+	{% if request.user.is_authenticated %}
 	<div class="d-flex justify-content-center">		
 			<a class="col-sm-3 d-flex bg-secondary p-1 m-1 text-center" href="{{ postagem.get_absolute_url_update }}"><h5>+ Editar postagem do blog</h5></a>
 			<a class="col-sm-3 d-flex bg-secondary p-1 m-1 text-center" href="{{ postagem.get_absolute_url_delete }}"><h5>+ Deletar postagem<h5></a>		
 	</div>
+	{% endif %}
 </div>
 {% endblock content %}

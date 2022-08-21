@@ -1,12 +1,28 @@
 {% extends 'base.html' %}
+{% load bootstrap %}
 
 {% block 'title' %}Cadastro{% endblock 'title' %}
-{% block  content %}
+{% block header %}
+    {% include 'parciais/_header.html'%}
+{% endblock%}
 
-<form method="post" action="">
-    {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit" value="Cadastre-se">   
-</form>
+{% block content %}
+    <div class="container justify-content-center">
+        <div class="card">
+            <div class="card-header">
+                <h2>Cadastro</h2>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    <!--{{ form.as_p}}-->
+                    {{ form|bootstrap }}
+                    <button type="submit">Cadastro</button>
+            
+                </form>
+            </div>
+        </div>
 
+    </div>   
+   
 {% endblock content %}

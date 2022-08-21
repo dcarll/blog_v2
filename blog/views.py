@@ -5,6 +5,7 @@ from django.views.generic.edit import CreateView
 from .models import Post
 from django.contrib.messages.views import SuccessMessageMixin
 from .forms import PostForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
 
@@ -22,7 +23,7 @@ class BLogDetailView(DetailView):
 	context_object_name = 'postagem'
 
 
-class BLogCreateView(SuccessMessageMixin, CreateView):
+class BLogCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
 	'''Cria um novo post'''
 	model = Post
 	form_class = PostForm
@@ -46,7 +47,7 @@ class BLogCreateView(SuccessMessageMixin, CreateView):
         )
 
 
-class BlogUpdateView(SuccessMessageMixin, UpdateView ):
+class BlogUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView ):
 	'''Atualiza um post'''
 	model = Post
 	form_class = PostForm
@@ -68,7 +69,8 @@ class BlogUpdateView(SuccessMessageMixin, UpdateView ):
             field=self.object.titulo,
         )
 
-class BlogDeleteView(SuccessMessageMixin, DeleteView):
+
+class BlogDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
 	'''Deleta um post'''
 	model = Post
 	template_name = 'blog/post_delete.html'
