@@ -15,8 +15,8 @@
 		<div class="row gx-4 gx-lg-5 justify-content-center">
 			<div class="col-md-10 col-lg-8 col-xl-7">
 				<div class="site-heading">
-					<h1>Blog do Diego</h1>
-					<span class="subheading">Nosso tempo é limitado, então, não gaste ele, vivendo a vida de mais alguém</span>
+					<h1>{{postagem.titulo}}</h1>
+					
 				</div>
 			</div>
 		</div>
@@ -40,7 +40,7 @@
 		<div class="d-flex justify-content-center">
 			<h1 class="text-primary">{{ postagem.titulo}}</h1>
 		</div> 		
- 		<p>{{postagem.conteudo|safe}}</p>
+ 		
 		 <p>{{postagem.conteudo|safe}}</p>
 		<!-- safe é pata exibir a imagem e 'truncatechars:'200'' é limitar o tanto de text exibido no template-->
 		 

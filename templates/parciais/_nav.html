@@ -9,7 +9,7 @@
         </button>
         
             <ul class="navbar-nav ms-auto py-4 py-lg-0">						
-                <li class="nav-item"><a class="nav-link" href="#">Sobre</a></li>
+                
                 {% if user.is_authenticated %}
                 <li class="nav-item"><a class="nav-link" href="{% url 'post_new'%}">+ Nova Postagem</a></li>
                 
