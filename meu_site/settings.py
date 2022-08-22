@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'bootstrap4',
     'bootstrapform',
     'social',
+    'contato',
 ]
 
 MIDDLEWARE = [
@@ -69,6 +70,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social.processors.ctx_social',
             ],
         },
     },
@@ -139,3 +141,10 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+EMAIL_HOST = 'smtp.mailtrap.io'
+EMAIL_HOST_USER = '13933c424d28c9'
+EMAIL_HOST_PASSWORD = '4cd191ae185145'
+EMAIL_PORT = '2525'
+
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

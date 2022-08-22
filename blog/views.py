@@ -15,6 +15,8 @@ class BlogListView(ListView):
 	model = Post
 	template_name = 'blog/home.html'
 
+	
+
 
 class BLogDetailView(DetailView):
 	'''Mostra os detalhes de um post'''

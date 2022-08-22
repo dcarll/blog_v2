@@ -1,0 +1,56 @@
+{% extends 'base.html'%}
+{% load static %}
+{% load bootstrap %}
+
+
+{% block title %}
+    contanto
+{% endblock %}
+<!--header -->
+
+{% block header%}
+
+
+<header class="masthead" style="background-image: url({% static 'img/header.PNG' %})">
+	<div class="container position-relative px-4 px-lg-5">
+		<div class="row gx-4 gx-lg-5 justify-content-center">
+			<div class="col-md-10 col-lg-8 col-xl-7">
+				<div class="site-heading">
+					<h1>Entre em contato conosco </h1>
+					<span class="subheading">Tem alguma pergunta</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</header> 
+{%endblock%}
+<!-- Page Header-->
+
+{% block content%}
+<!-- Main Content-->
+<div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+            
+            <div class="my-5">
+                <form method="POST" action="{% url 'contato' %}" >
+                    {% csrf_token %}
+                    {{form|bootstrap}}
+                    {% if success %}
+                    <div id="success">                    
+                        E-mail enviado com sucesso
+                    </div>
+                    {% else %}
+                    <div id="fail">                    
+                        Erro ao enviar seu email
+                    </div>
+                    {% endif %}
+                    <button class="btn btn-primary text-uppercase" id="submitButton" type="submit">Enviar</button>
+                </form>                            
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
