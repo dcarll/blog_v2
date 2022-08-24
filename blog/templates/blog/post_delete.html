@@ -1,0 +1,43 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block title %}
+	Blog | Deletar Postagem
+{% endblock title %}
+
+{% block header %}
+{% if object.imagem %}
+	<header class="masthead" style="background-image: url({{object.imagem.url}})">	
+{%else %}
+	<header class="masthead" style="background-image: url({% static 'img/header.PNG' %})">	
+{% endif %}
+	<div class="container position-relative px-4 px-lg-5">
+		<div class="row gx-4 gx-lg-5 justify-content-center">
+			<div class="col-md-10 col-lg-8 col-xl-7">
+				<div class="site-heading">
+					<h1>{{postagem.titulo}}</h1>					
+				</div>
+			</div>
+		</div>
+	</div>
+</header> 
+
+{% endblock %}
+
+{% block content %}
+
+
+<div class="container justify-content-center">
+    <h1>Aditar postagem</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        <p>Você tem certeza que deseja excluir o poste "{{ object.titulo }}" </p>
+        <input class="btn-success" type="submit" value="Confirmar">
+
+    </form>
+</div>
+
+
+ 		
+ 	
+{% endblock content %}
