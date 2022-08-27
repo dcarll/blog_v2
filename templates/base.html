@@ -14,6 +14,9 @@
 <style>
   body{
     background-color: #D3D3D3;
+    
+    
+
   }
 
   nav{
@@ -26,33 +29,31 @@
 </head>
 
 <body>
-  <div class="row">
+<div class="row">
   {% block nav %}
     {% include 'parciais/_nav.html'%}
   {% endblock nav %}
 </div>
+<div class="row">
+  <div class="container">
+    <div class="row">
+      {% block header %}
+        {% include 'parciais/_header.html'%}
+      {% endblock header %}
+    </div>
+    
+    <div class="row">
+      {% block content %}   
 
-<div class="container">
-  <div class="row">
-    {% block header %}
-      {% include 'parciais/_header.html'%}
-    {% endblock header %}
-  </div>
-  
-  <div class="row">
-    {% block content %}   
-
-    {% endblock content %}
-  </div>
-  
-  
-  
-  <div class="row">
-    {% block footer %}
-      {% include 'parciais/_footer.html'%}
-    {% endblock footer %}
+      {% endblock content %}
+    </div>
   </div>
 
+</div>
+<div class="row" style="background-color: #708090 ">
+  {% block footer %}
+    {% include 'parciais/_footer.html'%}
+  {% endblock footer %}
 </div>
 
   

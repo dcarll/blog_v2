@@ -13,7 +13,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 class BlogListView(ListView):
 	'''listar todos as postagens'''
 	model = Post
-	paginate_by = 2
+	paginate_by = 8
 	template_name = 'blog/home.html'
 
 	
