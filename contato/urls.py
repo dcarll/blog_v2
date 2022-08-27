@@ -3,5 +3,5 @@ from .views import contato
 #klsjd
 
 urlpatterns = [
-    path('contato/', contato, name="contato"),
+    path('', contato, name="contato"),
 ]

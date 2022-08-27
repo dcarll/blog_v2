@@ -1,4 +1,5 @@
 from dataclasses import fields
+from tkinter import Widget
 from django import forms
 from ckeditor.widgets import CKEditorWidget
 from .models import Post

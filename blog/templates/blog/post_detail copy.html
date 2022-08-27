@@ -1,0 +1,70 @@
+{% extends 'base.html'%}
+{% load static%}
+<style>
+	header{
+		background: url("static/img/header.PNG") no-repeat;
+     	color: white;
+    	height: 400px;
+		width: 100%;
+    	padding: 100px 0 0 0; 
+		background-size: 100% 100%;
+  		
+	}
+	.post{
+
+	}
+</style>
+
+{% block title %}
+	Blog | Detalhes
+{% endblock title %}
+
+{% block header %}
+{% if object.imagem %}
+	<header class="container" style="background-image: url({{object.imagem.url}})">	
+{%else %}
+	<header class="container" style="background-image: url({% static 'img/header.PNG' %})">	
+{% endif %}
+	<div class="container position-relative px-4 px-lg-5">
+		<div class="row gx-4 gx-lg-5 justify-content-center">
+			<div class="col-md-10 col-lg-8 col-xl-7">
+				<div class="site-heading">
+					<h1>{{postagem.titulo}}</h1>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</header> 
+
+
+{% endblock %}
+
+
+
+{% block content %}
+<div class="container justify-content-center">
+	{% if messages %}
+		<ul class="messages">
+			{% for message in messages %}
+				<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+			{% endfor %}
+		</ul>	
+	{% endif %}
+ 	<div class="container  border">
+		<div class="d-flex justify-content-center">
+			<h1 class="text-primary">{{ postagem.titulo}}</h1>
+		</div> 		
+ 		
+		 <p class="post">{{postagem.conteudo|safe}}</p>
+		<!-- safe é pata exibir a imagem e 'truncatechars:'200'' é limitar o tanto de text exibido no template-->
+		 
+ 	</div>
+	{% if request.user.is_authenticated %}
+	<div class="d-flex justify-content-center">		
+			<a class="col-sm-3 d-flex bg-secondary p-1 m-1 text-center" href="{{ postagem.get_absolute_url_update }}"><h5>+ Editar postagem do blog</h5></a>
+			<a class="col-sm-3 d-flex bg-secondary p-1 m-1 text-center" href="{{ postagem.get_absolute_url_delete }}"><h5>+ Deletar postagem<h5></a>		
+	</div>
+	{% endif %}
+</div>
+{% endblock content %}
