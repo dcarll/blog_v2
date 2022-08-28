@@ -6,7 +6,7 @@
 {% block title %}
 	Blog | Detalhes
 {%endblock%}
-<div class="row">
+<div class="container">
 {% block header%}
 	{% if object.imagem %}
 		<header class="container" 
@@ -47,7 +47,7 @@
 				{% endfor %}
 			</ul>	
 		{% endif %}
-		<div class="row">
+		<div class="col justify-content-center">
 			<div class="row">
 				<div class="container border">
 					<div class="d-flex justify-content-center">
@@ -59,12 +59,12 @@
 				<!-- safe é pata exibir a imagem e 'truncatechars:'200'' é limitar o tanto de text exibido no template-->
 			</div>
 			{% if request.user.is_authenticated %}
-			<div class="row">
-				
-			<div class="d-flex justify-content-center">		
-					<a class="col-sm-3 d-flex bg-secondary p-1 m-1 text-center" href="{{ postagem.get_absolute_url_update }}"><h5>+ Editar postagem do blog</h5></a>
-					<a class="col-sm-3 d-flex bg-secondary p-1 m-1 text-center" href="{{ postagem.get_absolute_url_delete }}"><h5>+ Deletar postagem<h5></a>		
+			<div class="container d-flex justify-content-center border">		
+			
+					<a class="text-center d-inline m-2 btn btn-primary text-white" href="{{ postagem.get_absolute_url_update }}"><h5>+ Editar postagem do blog</h5></a>
+					<a class="text-center d-inline m-2 btn btn-primary text-white" href="{{ postagem.get_absolute_url_delete }}"><h5>+ Deletar postagem<h5></a>		
 			</div>
+			
 			{% endif %}
 			
 			

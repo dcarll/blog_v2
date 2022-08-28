@@ -6,6 +6,7 @@ from .models import Post
 from django.contrib.messages.views import SuccessMessageMixin
 from .forms import PostForm
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db.models import Q
 
 # Create your views here.
 
@@ -87,3 +88,23 @@ class BlogDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
             cleaned_data,
             field=self.object.titulo,
         )
+class Busca(ListView):
+    template_name = 'blog/busca.html'	
+    model = Post
+    context_object_name = 'post'    
+	
+    def get_queryset(self):    
+        qs = super().get_queryset()
+        busca = self.request.GET.get('busca')
+
+        if not busca:
+            return qs
+
+        qs = qs.filter(
+            Q(titulo__icontains=busca) |
+            Q(autor__first_name__iexact=busca) |
+            Q(conteudo__icontains=busca)
+
+        )
+
+        return qs
